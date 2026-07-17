@@ -456,7 +456,6 @@
   const agree = document.getElementById("agree");
 
   const ownerName = document.getElementById("ownerName");
-  const ownerIdNo = document.getElementById("ownerIdNo");
   const ownerPhone = document.getElementById("ownerPhone");
   const ownerAddress = document.getElementById("ownerAddress");
   const petName = document.getElementById("petName");
@@ -626,7 +625,6 @@
     const data = {
       ownerName:    requireValue(ownerName, "甲方姓名"),
       ownerPhone:   requireValue(ownerPhone, "聯絡電話"),
-      ownerIdNo:    requireValue(ownerIdNo, "身分證字號"),
       ownerAddress: requireValue(ownerAddress, "通訊地址"),
       petName:      requireValue(petName, "寵物姓名"),
       petBreed:     requireValue(petBreed, "寵物品種"),
@@ -655,7 +653,6 @@
 `【犬貓美容契約簽署資料】
 甲方姓名：${data.ownerName}
 聯絡電話：${data.ownerPhone}
-身分證字號：${data.ownerIdNo}
 通訊地址：${data.ownerAddress}
 寵物名字：${data.petName}
 品種：${data.petBreed}
