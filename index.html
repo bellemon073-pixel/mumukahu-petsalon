@@ -307,7 +307,7 @@ body{
       storeName: "沐沐卡夫寵物美容",
       storeAddress: "桃園市桃園區慈文路635巷23號",
       storeLine: "@mumukahu",
-      liffId: "liff ID  2009406756-idmvHDme",
+      liffId: "2009406756-idmvHDme",
       googleScriptUrl: "https://script.google.com/macros/s/AKfycbzksoKg11e-RdQ95azcJkqtZc8Z3ouG7GeyPQAbOlFBZHCnlBImzrAjp-xGjWmhGbr7aA/exec",
       sharedSecret: "mumukahu6520"
     };
@@ -742,6 +742,7 @@ body{
   const submitBtn = document.getElementById("submit");
   const msg = document.getElementById("msg");
   const agree = document.getElementById("agree");
+  let isSubmitting = false;
 
   const ownerName = document.getElementById("ownerName");
   const ownerPhone = document.getElementById("ownerPhone");
@@ -792,6 +793,7 @@ body{
   canvas.style.touchAction = "none";
 
   function resetSubmit(){
+    isSubmitting = false;
     submitBtn.disabled = false;
     submitBtn.textContent = "送出簽名";
   }
@@ -1075,6 +1077,8 @@ body{
   }
 
   submitBtn.onclick = async () => {
+    if(isSubmitting) return;
+    isSubmitting = true;
     msg.textContent = "";
     submitBtn.disabled = true;
     submitBtn.textContent = "謝謝您！資料上傳中...";
@@ -1102,7 +1106,6 @@ body{
       emergencyName: requireValue(emergencyName, "緊急聯絡人"),
       emergencyPhone: requireValue(emergencyPhone, "緊急聯絡人電話"),
       ownerEmail: requireValue(ownerEmail, "Email（寄送附本用）"),
-      ownerIdNo: requireValue(ownerIdNo, "身分證字號"),
       ownerAddress: requireValue(ownerAddress, "通訊地址"),
 
       isOwnerSelf,
@@ -1214,7 +1217,6 @@ body{
 緊急聯絡人：${data.emergencyName}
 緊急聯絡人電話：${data.emergencyPhone}
 Email：${data.ownerEmail}
-身分證字號：${data.ownerIdNo}
 通訊地址：${data.ownerAddress}
 是否飼主本人：${data.isOwnerSelf}${data.ownerRelation ? "（關係：" + data.ownerRelation + "）" : ""}
 
